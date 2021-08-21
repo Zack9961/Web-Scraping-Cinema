@@ -1,6 +1,6 @@
 import bs4, requests
 
-print("Are you searching for a film(0) or an actor(1) ?")
+print('Are you searching for a film(0) or an actor(1) ?')
 choise = input()
 
 #Input validation
@@ -10,13 +10,13 @@ while(choise != '1' and choise != '0'):
 
 
 if(choise != '1'):
-    print("Good choise, what film are you looking for?")
+    print('Good choise, what film are you looking for?')
     film_title = input()
 
     #ROTTEN TOMATOES
 
     #Searching user's film on Rotten Tomatoes
-    LINK = "https://www.rottentomatoes.com/search?search="
+    LINK = 'https://www.rottentomatoes.com/search?search='
     headers = {'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/92.0.4515.115 Safari/537.36'}
     response = requests.get(LINK +''.join(film_title), headers = headers)
     response.raise_for_status()
@@ -46,7 +46,7 @@ if(choise != '1'):
     #METACRITIC
 
     #Searching user's film on metacritic
-    LINK = "https://www.metacritic.com/search/movie/"
+    LINK = 'https://www.metacritic.com/search/movie/'
     headers = {'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/92.0.4515.115 Safari/537.36'}
     response = requests.get(LINK + ''.join(film_title) + ''.join('/results'), headers = headers)
     response.raise_for_status()
@@ -91,7 +91,7 @@ if(choise != '1'):
     #IMDB
 
     #Searching user's film on metacritic
-    LINK = "https://www.imdb.com/find?s=tt&q="
+    LINK = 'https://www.imdb.com/find?s=tt&q='
     headers = {'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/92.0.4515.115 Safari/537.36'}
     response = requests.get(LINK + ''.join(film_title), headers = headers)
     response.raise_for_status()
@@ -127,18 +127,18 @@ if(choise != '1'):
         
     #Printing movies found because can be different for site to site
     print('\n******MOVIES FOUND******')
-    print("IMDb: "+ film_name_IMDb)
-    print("Metacritic: "+ film_name_metacritic)
-    print("Rotten Tomatoes: "+ film_name_rotten)
+    print('IMDb: '+ film_name_IMDb)
+    print('Metacritic: '+ film_name_metacritic)
+    print('Rotten Tomatoes: '+ film_name_rotten)
 
     #Printing film's ratings
-    print("\n******RATINGS******")
+    print('\n******RATINGS******')
 
     #IMDb
     if(rating_div_IMDb == 'Not Found'):
         print('IMDb: Not Found')
     else:
-        print("IMDb: " + rating_div_IMDb + "/10")
+        print('IMDb: ' + rating_div_IMDb + '/10')
 
     #Metacritic
     if(rating_div_metacritic == 'Not Found'):
@@ -146,17 +146,17 @@ if(choise != '1'):
     elif(rating_div_metacritic == 'To Be Decided'):
         print('Metacritic: To Be Decided')
     else:
-        print("Metacritic: " + rating_div_metacritic + "/100")
+        print('Metacritic: ' + rating_div_metacritic + '/100')
 
     #Rotten Tomatoes
     if(rating_rotten == 'Not Found' or rating_rotten == ''):
         print('Rotten Tomatoes: Not Found')
     else:
-        print("Rotten Tomatoes: " + rating_rotten + "%")
+        print('Rotten Tomatoes: ' + rating_rotten + '%')
 
 
     #Priting movie info (from IMDb)
-    print("\n******MOVIE INFO******")
+    print('\n******MOVIE INFO******')
     try:
         movie_info = soup.find('span', class_ = 'GenresAndPlot__TextContainerBreakpointL-cum89p-1 gwuUFD')
     except NameError:
@@ -167,7 +167,7 @@ if(choise != '1'):
         print(movie_info.text)
 
     #Printing movie genre(s) (from IMDb)
-    print("\n******GENRE(S)******")
+    print('\n******GENRE(S)******')
     #In case of film or genre(s) not found
     try:
         movie_genres = soup.find('div', class_ = 'ipc-chip-list GenresAndPlot__GenresChipList-cum89p-4 gtBDBL').find_all('span', class_ = 'ipc-chip__text')
@@ -177,7 +177,7 @@ if(choise != '1'):
         print('Not Found')
     
     #Printing movie director(s) (from IMDb)
-    print("\n******DIRECTOR(S)******")
+    print('\n******DIRECTOR(S)******')
     #In case of film or director(s) not found
     try:
         movie_directors = soup.find('div', class_ = 'ipc-metadata-list-item__content-container').find_all('li', class_ = 'ipc-inline-list__item')
@@ -188,7 +188,7 @@ if(choise != '1'):
     
 
     #Printing movie actor (from IMDb)
-    print("\n******MAIN ACTOR******")
+    print('\n******MAIN ACTOR******')
     try:
         movie_actor = soup.find_all('a', class_ = 'StyledComponents__ActorName-y9ygcu-1 eyqFnv')
         print(movie_actor[0].text)
@@ -197,11 +197,11 @@ if(choise != '1'):
 
 
 else:
-    print("Nice, what actor are you looking for?")
+    print('Nice, what actor are you looking for?')
     actor_name = input()
 
     #Searching user's actor on IMDb
-    LINK = "https://www.imdb.com/find?s=nm&q="
+    LINK = 'https://www.imdb.com/find?s=nm&q='
     headers = {'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/92.0.4515.115 Safari/537.36'}
     response = requests.get(LINK + ''.join(actor_name) + ''.join('&ref_=nv_sr_sm'), headers = headers)
     response.raise_for_status()
@@ -220,7 +220,7 @@ else:
         print('\nActor Found: '+ actor_name)
 
         #Finding and printing filmography
-        print("\n******FILMOGRAPHY******")
+        print('\n******FILMOGRAPHY******')
         response_filmography = requests.get(link_actor_full, headers = headers)
         response_filmography.raise_for_status()
         soup = bs4.BeautifulSoup(response_filmography.text, 'html.parser')
