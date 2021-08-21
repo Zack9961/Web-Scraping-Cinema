@@ -227,7 +227,7 @@ else:
 
         #In case of actor found but filmography not found
         try:
-            filmography = soup.find('div', class_ = 'filmo-category-section').find_all('b')
+            filmography = soup.find('div', id = 'filmo-head-actor').find_next('div').find_all('b')
             for i in range(len(filmography)):
                 print(filmography[i].text)
         except (TypeError, AttributeError):
