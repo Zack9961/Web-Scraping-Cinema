@@ -90,7 +90,7 @@ if(choise != '1'):
 
     #IMDB
 
-    #Searching user's film on metacritic
+    #Searching user's film on IMDb
     LINK = 'https://www.imdb.com/find?s=tt&q='
     headers = {'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/92.0.4515.115 Safari/537.36'}
     response = requests.get(LINK + ''.join(film_title), headers = headers)
